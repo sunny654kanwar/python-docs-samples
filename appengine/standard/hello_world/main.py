@@ -12,15 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import webapp2
+#!flask/bin/python
+from flask import Flask
 
+app = Flask(__name__)
 
-class MainPage(webapp2.RequestHandler):
-    def get(self):
-        self.response.headers['Content-Type'] = 'text/plain'
-        self.response.write('Hey there Saurabh!')
+@app.route('/')
+def index():
+    return "Hello, World!"
 
-
-app = webapp2.WSGIApplication([
-    ('/', MainPage),
-], debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
