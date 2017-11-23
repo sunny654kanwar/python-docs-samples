@@ -1,0 +1,7 @@
+runtime: python
+env: flex
+entrypoint: gunicorn -b :$PORT sapconnect.wsgi
+threadsafe: true
+handlers:
+- url: /sapapi
+  script: views.app
