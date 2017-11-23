@@ -1,7 +1,16 @@
+# [START runtime]
 runtime: python
 env: flex
 entrypoint: gunicorn -b :$PORT sapconnect.wsgi
-threadsafe: true
-handlers:
-- url: /sapapi
-  script: views.app
+
+runtime_config:
+  python_version: 3
+
+manual_scaling:
+  instances: 1
+
+resources:
+  cpu: 1
+  memory_gb: 1.4
+  disk_size_gb: 10
+# [END runtime]
